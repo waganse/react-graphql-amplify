@@ -16,7 +16,6 @@ export const createPage = `mutation CreatePage($input: CreatePageInput!) {
         fr
         tl
         en029
-        enGB
         description
       }
       nextToken
@@ -39,7 +38,6 @@ export const updatePage = `mutation UpdatePage($input: UpdatePageInput!) {
         fr
         tl
         en029
-        enGB
         description
       }
       nextToken
@@ -62,7 +60,6 @@ export const deletePage = `mutation DeletePage($input: DeletePageInput!) {
         fr
         tl
         en029
-        enGB
         description
       }
       nextToken
@@ -81,15 +78,14 @@ export const createMessage = `mutation CreateMessage($input: CreateMessageInput!
     fr
     tl
     en029
-    enGB
-    description
-    page {
+    enGB {
       id
       name
       messages {
         nextToken
       }
     }
+    description
   }
 }
 `;
@@ -104,15 +100,14 @@ export const updateMessage = `mutation UpdateMessage($input: UpdateMessageInput!
     fr
     tl
     en029
-    enGB
-    description
-    page {
+    enGB {
       id
       name
       messages {
         nextToken
       }
     }
+    description
   }
 }
 `;
@@ -127,15 +122,14 @@ export const deleteMessage = `mutation DeleteMessage($input: DeleteMessageInput!
     fr
     tl
     en029
-    enGB
-    description
-    page {
+    enGB {
       id
       name
       messages {
         nextToken
       }
     }
+    description
   }
 }
 `;

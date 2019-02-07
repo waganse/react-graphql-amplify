@@ -16,7 +16,6 @@ export const onCreatePage = `subscription OnCreatePage {
         fr
         tl
         en029
-        enGB
         description
       }
       nextToken
@@ -39,7 +38,6 @@ export const onUpdatePage = `subscription OnUpdatePage {
         fr
         tl
         en029
-        enGB
         description
       }
       nextToken
@@ -62,7 +60,6 @@ export const onDeletePage = `subscription OnDeletePage {
         fr
         tl
         en029
-        enGB
         description
       }
       nextToken
@@ -81,15 +78,14 @@ export const onCreateMessage = `subscription OnCreateMessage {
     fr
     tl
     en029
-    enGB
-    description
-    page {
+    enGB {
       id
       name
       messages {
         nextToken
       }
     }
+    description
   }
 }
 `;
@@ -104,15 +100,14 @@ export const onUpdateMessage = `subscription OnUpdateMessage {
     fr
     tl
     en029
-    enGB
-    description
-    page {
+    enGB {
       id
       name
       messages {
         nextToken
       }
     }
+    description
   }
 }
 `;
@@ -127,15 +122,14 @@ export const onDeleteMessage = `subscription OnDeleteMessage {
     fr
     tl
     en029
-    enGB
-    description
-    page {
+    enGB {
       id
       name
       messages {
         nextToken
       }
     }
+    description
   }
 }
 `;

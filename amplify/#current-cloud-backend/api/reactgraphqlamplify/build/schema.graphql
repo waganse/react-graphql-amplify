@@ -1,0 +1,184 @@
+type Page {
+  id: ID!
+  name: String!
+  messages(filter: ModelMessageFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelMessageConnection
+}
+
+type Message {
+  id: ID!
+  symbol: String!
+  ja: String!
+  en: String!
+  zhCN: String!
+  ko: String!
+  fr: String!
+  tl: String!
+  en029: String!
+  enGB: Page
+  description: String
+}
+
+enum ModelSortDirection {
+  ASC
+  DESC
+}
+
+type ModelPageConnection {
+  items: [Page]
+  nextToken: String
+}
+
+input ModelStringFilterInput {
+  ne: String
+  eq: String
+  le: String
+  lt: String
+  ge: String
+  gt: String
+  contains: String
+  notContains: String
+  between: [String]
+  beginsWith: String
+}
+
+input ModelIDFilterInput {
+  ne: ID
+  eq: ID
+  le: ID
+  lt: ID
+  ge: ID
+  gt: ID
+  contains: ID
+  notContains: ID
+  between: [ID]
+  beginsWith: ID
+}
+
+input ModelIntFilterInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  contains: Int
+  notContains: Int
+  between: [Int]
+}
+
+input ModelFloatFilterInput {
+  ne: Float
+  eq: Float
+  le: Float
+  lt: Float
+  ge: Float
+  gt: Float
+  contains: Float
+  notContains: Float
+  between: [Float]
+}
+
+input ModelBooleanFilterInput {
+  ne: Boolean
+  eq: Boolean
+}
+
+input ModelPageFilterInput {
+  id: ModelIDFilterInput
+  name: ModelStringFilterInput
+  and: [ModelPageFilterInput]
+  or: [ModelPageFilterInput]
+  not: ModelPageFilterInput
+}
+
+type Query {
+  getPage(id: ID!): Page
+  listPages(filter: ModelPageFilterInput, limit: Int, nextToken: String): ModelPageConnection
+  getMessage(id: ID!): Message
+  listMessages(filter: ModelMessageFilterInput, limit: Int, nextToken: String): ModelMessageConnection
+}
+
+input CreatePageInput {
+  id: ID
+  name: String!
+}
+
+input UpdatePageInput {
+  id: ID!
+  name: String
+}
+
+input DeletePageInput {
+  id: ID
+}
+
+type Mutation {
+  createPage(input: CreatePageInput!): Page
+  updatePage(input: UpdatePageInput!): Page
+  deletePage(input: DeletePageInput!): Page
+  createMessage(input: CreateMessageInput!): Message
+  updateMessage(input: UpdateMessageInput!): Message
+  deleteMessage(input: DeleteMessageInput!): Message
+}
+
+type Subscription {
+  onCreatePage: Page @aws_subscribe(mutations: ["createPage"])
+  onUpdatePage: Page @aws_subscribe(mutations: ["updatePage"])
+  onDeletePage: Page @aws_subscribe(mutations: ["deletePage"])
+  onCreateMessage: Message @aws_subscribe(mutations: ["createMessage"])
+  onUpdateMessage: Message @aws_subscribe(mutations: ["updateMessage"])
+  onDeleteMessage: Message @aws_subscribe(mutations: ["deleteMessage"])
+}
+
+type ModelMessageConnection {
+  items: [Message]
+  nextToken: String
+}
+
+input ModelMessageFilterInput {
+  id: ModelIDFilterInput
+  symbol: ModelStringFilterInput
+  ja: ModelStringFilterInput
+  en: ModelStringFilterInput
+  zhCN: ModelStringFilterInput
+  ko: ModelStringFilterInput
+  fr: ModelStringFilterInput
+  tl: ModelStringFilterInput
+  en029: ModelStringFilterInput
+  description: ModelStringFilterInput
+  and: [ModelMessageFilterInput]
+  or: [ModelMessageFilterInput]
+  not: ModelMessageFilterInput
+}
+
+input CreateMessageInput {
+  id: ID
+  symbol: String!
+  ja: String!
+  en: String!
+  zhCN: String!
+  ko: String!
+  fr: String!
+  tl: String!
+  en029: String!
+  description: String
+  messageEnGBId: ID
+}
+
+input UpdateMessageInput {
+  id: ID!
+  symbol: String
+  ja: String
+  en: String
+  zhCN: String
+  ko: String
+  fr: String
+  tl: String
+  en029: String
+  description: String
+  messageEnGBId: ID
+}
+
+input DeleteMessageInput {
+  id: ID
+}

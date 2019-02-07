@@ -1,0 +1,18 @@
+type Page @model {
+  id: ID!
+  name: String!
+  messages: [Message] @connection(name: "Messages")
+}
+type Message @model {
+  id: ID!
+  symbol: String!
+  ja: String!
+  en: String!
+  zhCN: String!
+  ko: String!
+  fr: String!
+  tl: String!
+  en029: String!
+  enGB: Page @connection(name: "Messages")
+  description: String
+}

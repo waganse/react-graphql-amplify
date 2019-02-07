@@ -16,7 +16,6 @@ export const getPage = `query GetPage($id: ID!) {
         fr
         tl
         en029
-        enGB
         description
       }
       nextToken
@@ -52,15 +51,14 @@ export const getMessage = `query GetMessage($id: ID!) {
     fr
     tl
     en029
-    enGB
-    description
-    page {
+    enGB {
       id
       name
       messages {
         nextToken
       }
     }
+    description
   }
 }
 `;
@@ -80,12 +78,11 @@ export const listMessages = `query ListMessages(
       fr
       tl
       en029
-      enGB
-      description
-      page {
+      enGB {
         id
         name
       }
+      description
     }
     nextToken
   }
